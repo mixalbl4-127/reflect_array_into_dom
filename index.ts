@@ -49,7 +49,6 @@ class Raid {
     splice(start: number, deleteCount: number, ...items: RaidObject[]): RaidObject[] {
         let will_be_deleted: RaidObject[] = this.arr.slice(start, (start < 0 && start + deleteCount >= 0) ? undefined : start + deleteCount);
 
-        debugger
         if (will_be_deleted.length) { /** @example splice(0, 1) */
             if (items.length) { /** @example splice(0, 1, {el: ...}) */
                 for (let i = items.length - 1; i >= 0; i--) // reverse array

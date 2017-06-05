@@ -1,16 +1,16 @@
 # Reflect array into DOM lib (RAID)
 RAID will helps to reflect array changes into DOM.
 
-You just make `new RAID(...)` and use like simple array, library will update the DOM itself. 
+You just make `new Raid(...)` and use like simple array, library will update the DOM itself. 
 
 ## How to install?
-    npm install reflectArrayIntoDOM --save
+    npm install js-raid --save
 
 ## How to compile?
     npm run compile
 
 ## How to use?
-- Connect lib to page: `<script src="./node_modules/reflectArrayIntoDOM/index.js"></script>`
+- Connect lib to page: `<script src="./node_modules/js-raid/index.js"></script>`
 - Use lib :)
 
         <div id="some"></div>

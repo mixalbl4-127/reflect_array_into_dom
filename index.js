@@ -41,7 +41,6 @@ var Raid = (function () {
             items[_i - 2] = arguments[_i];
         }
         var will_be_deleted = this.arr.slice(start, (start < 0 && start + deleteCount >= 0) ? undefined : start + deleteCount);
-        debugger;
         if (will_be_deleted.length) {
             if (items.length) {
                 for (var i = items.length - 1; i >= 0; i--)
