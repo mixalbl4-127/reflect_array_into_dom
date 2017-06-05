@@ -1,0 +1,22 @@
+{
+  "name": "reflectArrayIntoDOM",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "update-webdriver": "webdriver-manager update",
+
+    "preprotractor": "npm run update-webdriver",
+    "protractor": "protractor test/e2e/protractor.conf.js",
+    "compile": "tsc --project tsconfig.json"
+  },
+  "author": "mixal_bl4",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "jasmine": "^2.6.0",
+    "phantomjs": "^2.1.7",
+    "protractor": "^5.1.2",
+    "typescript": "^2.3.4"
+  }
+}
