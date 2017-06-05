@@ -41,6 +41,10 @@ You just make `new Raid(...)` and use like simple array, library will update the
 - RAIDClass.push({el: HTMLElement} [, ...]);
 - RAIDClass.pop();
 - RAIDClass.splice([...]);
+- RAIDClass.sort(fn);
+- RAIDClass.shift(fn);
+- RAIDClass.unshift(fn);
+- RAIDClass.reverse(fn);
 
 ## Supported props:
 - RAIDClass.length

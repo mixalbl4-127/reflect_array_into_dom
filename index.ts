@@ -34,6 +34,71 @@ class Raid {
     }
 
     /**
+     * Removes the first element from an array and returns it.
+     */
+    shift(): any | undefined {
+        let first: any | undefined = this.arr.shift();
+        first && this.parent.removeChild(first.el);
+        this._updateLength();
+        return first;
+    }
+
+    /**
+     * Inserts new elements at the start of an array.
+     */
+    unshift(...items: RaidObject[]): number {
+        if (this.arr.length) {
+            items.forEach((item: RaidObject) => this.parent.insertBefore(item.el, this.arr[0].el));
+        } else {
+            items.forEach((item: RaidObject) => this.parent.appendChild(item.el));
+        }
+
+        let result: number = this.arr.unshift(...items);
+        this._updateLength();
+        return result;
+    }
+
+    /**
+     * reverse elements in array and returns array.
+     */
+    reverse(): any | undefined {
+        let reverse_arr: any | undefined = this.arr.reverse();
+        reverse_arr.forEach((item: RaidObject) => this.parent.appendChild(item.el));
+        return reverse_arr;
+    }
+
+    /**
+     * Sorts an array.
+     */
+    sort(compareFn?: (a: RaidObject, b: RaidObject) => number): RaidObject[] {
+        if (compareFn) {
+            this.arr.sort((a: RaidObject, b: RaidObject) => {
+                let res = compareFn(a, b);
+                if (res > 0) {
+                    this.insertAfter(a.el, b.el);
+                } else if (res < 0) {
+                    this.insertAfter(b.el, a.el);
+                }
+                return res;
+            });
+        } else {
+            console.warn('RAID: empty .sort() can\'t sorts objects correctly! Use .sort(compareFn)!');
+            // Default sort
+            this.arr.sort((a: RaidObject, b: RaidObject) => {
+                if (String(a) > String(b)) {
+                    this.insertAfter(a.el, b.el);
+                    return 1;
+                } else if (String(a) < String(b)) {
+                    this.insertAfter(b.el, a.el);
+                    return -1;
+                }
+                return 0;
+            });
+        }
+        return this.arr;
+    }
+
+    /**
      * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
      * @param start The zero-based location in the array from which to start removing elements.
      * @param deleteCount The number of elements to remove.

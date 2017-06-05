@@ -29,6 +29,78 @@ var Raid = (function () {
         return last;
     };
     /**
+     * Removes the first element from an array and returns it.
+     */
+    Raid.prototype.shift = function () {
+        var first = this.arr.shift();
+        first && this.parent.removeChild(first.el);
+        this._updateLength();
+        return first;
+    };
+    /**
+     * Inserts new elements at the start of an array.
+     */
+    Raid.prototype.unshift = function () {
+        var _this = this;
+        var items = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            items[_i] = arguments[_i];
+        }
+        if (this.arr.length) {
+            items.forEach(function (item) { return _this.parent.insertBefore(item.el, _this.arr[0].el); });
+        }
+        else {
+            items.forEach(function (item) { return _this.parent.appendChild(item.el); });
+        }
+        var result = (_a = this.arr).unshift.apply(_a, items);
+        this._updateLength();
+        return result;
+        var _a;
+    };
+    /**
+     * reverse elements in array and returns array.
+     */
+    Raid.prototype.reverse = function () {
+        var _this = this;
+        var reverse_arr = this.arr.reverse();
+        reverse_arr.forEach(function (item) { return _this.parent.appendChild(item.el); });
+        return reverse_arr;
+    };
+    /**
+     * Sorts an array.
+     */
+    Raid.prototype.sort = function (compareFn) {
+        var _this = this;
+        if (compareFn) {
+            this.arr.sort(function (a, b) {
+                var res = compareFn(a, b);
+                if (res > 0) {
+                    _this.insertAfter(a.el, b.el);
+                }
+                else if (res < 0) {
+                    _this.insertAfter(b.el, a.el);
+                }
+                return res;
+            });
+        }
+        else {
+            console.warn('RAID: empty .sort() can\'t sorts objects correctly! Use .sort(compareFn)!');
+            // Default sort
+            this.arr.sort(function (a, b) {
+                if (String(a) > String(b)) {
+                    _this.insertAfter(a.el, b.el);
+                    return 1;
+                }
+                else if (String(a) < String(b)) {
+                    _this.insertAfter(b.el, a.el);
+                    return -1;
+                }
+                return 0;
+            });
+        }
+        return this.arr;
+    };
+    /**
      * Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
      * @param start The zero-based location in the array from which to start removing elements.
      * @param deleteCount The number of elements to remove.
