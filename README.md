@@ -13,24 +13,23 @@ You just make `new RAID(...)` and use like simple array, library will update the
 - Connect lib to page: `<script src="./node_modules/reflectArrayIntoDOM/index.js"></script>`
 - Use lib :)
 
-
-    <div id="some"></div>
-    <script>
-        var some = document.getElementById('some');
-        var someRAID = new Raid(some);
-
-        function make_el_obj(text) {
-            var div = document.createElement('div');
-            div.innerHTML = text;
-            return {text: text, el: div};
-        }
-        someRAID.push(make_el_obj('1'));
-        someRAID.push(make_el_obj('2'));
-        someRAID.push(make_el_obj('3'));
-        setTimeout(function(){
-            someRAID.pop();
-        }, 1000);
-    </script>
+        <div id="some"></div>
+        <script>
+            var some = document.getElementById('some');
+            var someRAID = new Raid(some);
+    
+            function make_el_obj(text) {
+                var div = document.createElement('div');
+                div.innerHTML = text;
+                return {text: text, el: div};
+            }
+            someRAID.push(make_el_obj('1'));
+            someRAID.push(make_el_obj('2'));
+            someRAID.push(make_el_obj('3'));
+            setTimeout(function(){
+                someRAID.pop();
+            }, 1000);
+        </script>
 
 ## How to test?
 1. Clone this repo
