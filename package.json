@@ -1,17 +1,25 @@
 {
   "name": "reflectArrayIntoDOM",
   "version": "1.0.0",
-  "description": "",
+  "description": "RAID will helps to reflect array changes into DOM.",
   "main": "index.js",
   "scripts": {
     "update-webdriver": "webdriver-manager update",
-
     "preprotractor": "npm run update-webdriver",
     "protractor": "protractor test/e2e/protractor.conf.js",
-    "compile": "tsc --project tsconfig.json"
+    "compile": "tsc --project tsconfig.json",
+    "test": "npm run protractor"
   },
-  "author": "mixal_bl4",
-  "license": "ISC",
+  "author": {
+    "name": "mixal_bl4",
+    "email": "mixalbl4.127@gmail.com",
+    "url": "https://github.com/mixalbl4-127"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mixalbl4-127/reflect_array_into_dom.git"
+  },
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "jasmine": "^2.6.0",
