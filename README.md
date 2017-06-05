@@ -1,7 +1,7 @@
 # Reflect array into DOM lib (RAID)
 RAID will helps to reflect array changes into DOM.
 
-You just make `new Raid(...)` and use like simple array, library will update the DOM itself. 
+You just make `new Raid(...html_container...)` and use like simple array, library will update the DOM itself. 
 
 ## How to install?
     npm install js-raid --save
@@ -11,23 +11,51 @@ You just make `new Raid(...)` and use like simple array, library will update the
 
 ## How to use?
 - Connect lib to page: `<script src="./node_modules/js-raid/index.js"></script>`
-- Use lib :)
+- Use lib :) Example #1:
 
         <div id="some"></div>
         <script>
-            var some = document.getElementById('some');
-            var someRAID = new Raid(some);
-    
+            var some = document.getElementById('some'); // Gets container object
+            var someRAID = new Raid(some); // Makes new Raid on this container
+            
+            // function for makes object like: {text: 1, el: ...}
             function make_el_obj(text) {
                 var div = document.createElement('div');
                 div.innerHTML = text;
                 return {text: text, el: div};
             }
-            someRAID.push(make_el_obj('1'));
-            someRAID.push(make_el_obj('2'));
-            someRAID.push(make_el_obj('3'));
+
+            someRAID.push(make_el_obj('1')); // Makes and push div with 1
+            someRAID.push(make_el_obj('2')); // Makes and push div with 2
+            someRAID.push(make_el_obj('3')); // Makes and push div with 3
+
+            // Pops array after 1s
             setTimeout(function(){
-                someRAID.pop();
+                someRAID.pop(); // Pops array
+            }, 1000);
+        </script>
+
+**All array objects must contain `el` key with HTMLElement!**
+
+## Example #2 (simple)
+
+        <div id="some"></div>
+        <script>
+            var some = document.getElementById('some'); // Gets container object
+            var someRAID = new Raid(some); // Makes new Raid on this container
+
+            var div1 = document.createElement('div'); // Makes div with 1
+            div1.innerHTML = 'First!'; // Adds some text
+
+            var div2 = document.createElement('div'); // Makes div with 2
+            div2.innerHTML = 'Second!'; // Adds some text
+
+            someRAID.push({el: div1}); // Makes and push div with 'First!'
+            someRAID.push({el: div2}); // Makes and push div with 'Second!'
+
+            // Pops array after 1s
+            setTimeout(function(){
+                someRAID.pop(); // Pops array
             }, 1000);
         </script>
 
