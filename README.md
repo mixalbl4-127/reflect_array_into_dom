@@ -42,11 +42,12 @@ You just make `new Raid(...)` and use like simple array, library will update the
 - RAIDClass.pop();
 - RAIDClass.splice([...]);
 - RAIDClass.sort(fn);
-- RAIDClass.shift(fn);
-- RAIDClass.unshift(fn);
-- RAIDClass.reverse(fn);
+- RAIDClass.shift();
+- RAIDClass.unshift([...]);
+- RAIDClass.reverse();
 
 ## Supported props:
-- RAIDClass.length
+- RAIDClass.length - array length
+- RAIDClass.arr - original array **(don't do any changes (like split, sort etc) in original array!)**
 
 **All methods and props works like in [JS Array methods](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array)!**
