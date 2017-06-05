@@ -1,6 +1,6 @@
 {
   "name": "js-raid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "RAID will helps to reflect array changes into DOM.",
   "main": "index.js",
   "scripts": {
