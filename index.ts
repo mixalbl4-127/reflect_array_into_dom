@@ -1,5 +1,4 @@
 interface RaidObject {
-    _id?: string;
     el: HTMLElement;
 }
 
@@ -60,7 +59,7 @@ class Raid {
             if (before_it && before_it.length) {
                 items.forEach((item: RaidObject) => this.parent.insertBefore(item.el, before_it[0].el));
             } else { /** @example splice(9999999999, 0, {el: ...}) */
-                this.push(...items);
+                items.forEach((item: RaidObject) => this.parent.appendChild(item.el));
             }
         } else {
             throw new Error('Some went wrong!');

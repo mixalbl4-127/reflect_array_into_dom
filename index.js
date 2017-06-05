@@ -54,7 +54,7 @@ var Raid = (function () {
                 items.forEach(function (item) { return _this.parent.insertBefore(item.el, before_it_1[0].el); });
             }
             else {
-                this.push.apply(/** @example splice(9999999999, 0, {el: ...}) */ this, items);
+                items.forEach(function (item) { return _this.parent.appendChild(item.el); });
             }
         }
         else {
