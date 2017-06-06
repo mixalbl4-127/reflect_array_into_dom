@@ -92,7 +92,7 @@ var Raid = (function () {
                     return 1;
                 }
                 else if (String(a) < String(b)) {
-                    _this.insertAfter(b.el, a.el);
+                    _this.parent.insertBefore(a.el, b.el);
                     return -1;
                 }
                 return 0;
