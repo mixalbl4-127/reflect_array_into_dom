@@ -26,10 +26,9 @@ describe('RAID E2E', function () {
         it('push one element', function () {
             browser.executeScript(function () {
                 someRAID.push(make_el_obj(1));
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
         it('push 3 elements one by one', function () {
@@ -37,19 +36,17 @@ describe('RAID E2E', function () {
                 someRAID.push(make_el_obj(1));
                 someRAID.push(make_el_obj(2));
                 someRAID.push(make_el_obj(3));
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
         it('push 3 elements in one', function () {
             browser.executeScript(function () {
                 someRAID.push(make_el_obj(1), make_el_obj(2), make_el_obj(3));
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
     });
@@ -67,10 +64,9 @@ describe('RAID E2E', function () {
             browser.executeScript(function () {
                 someRAID.push(make_el_obj(1), make_el_obj(2), make_el_obj(3));
                 someRAID.pop();
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
 
@@ -79,10 +75,9 @@ describe('RAID E2E', function () {
                 someRAID.push(make_el_obj(1), make_el_obj(2), make_el_obj(3));
                 someRAID.pop();
                 someRAID.pop();
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
     });
@@ -101,10 +96,9 @@ describe('RAID E2E', function () {
             browser.executeScript(function () {
                 someRAID.push(make_el_obj(1), make_el_obj(2), make_el_obj(3));
                 someRAID.shift();
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
     });
@@ -123,10 +117,9 @@ describe('RAID E2E', function () {
             browser.executeScript(function () {
                 someRAID.push(make_el_obj(1), make_el_obj(2), make_el_obj(3));
                 someRAID.reverse();
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
     });
@@ -149,10 +142,9 @@ describe('RAID E2E', function () {
                 someRAID.sort(function (a, b) {
                     return a.text - b.text;
                 });
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
 
@@ -162,10 +154,9 @@ describe('RAID E2E', function () {
                 someRAID.sort(function (a, b) {
                     return +(a.text > b.text) || +(a.text === b.text) - 1;
                 });
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
 
@@ -178,10 +169,9 @@ describe('RAID E2E', function () {
                 someRAID.sort(function (a, b) {
                     return +(a.text > b.text) || +(a.text === b.text) - 1;
                 });
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
     });
@@ -200,10 +190,9 @@ describe('RAID E2E', function () {
             browser.executeScript(function () {
                 someRAID.push(make_el_obj(1), make_el_obj(2), make_el_obj(3));
                 someRAID.splice(0, 1);
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
 
@@ -211,10 +200,9 @@ describe('RAID E2E', function () {
             browser.executeScript(function () {
                 someRAID.push(make_el_obj(1), make_el_obj(2), make_el_obj(3));
                 someRAID.splice(1, 1);
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
 
@@ -222,10 +210,9 @@ describe('RAID E2E', function () {
             browser.executeScript(function () {
                 someRAID.push(make_el_obj(1), make_el_obj(2), make_el_obj(3));
                 someRAID.splice(1, 1);
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
 
@@ -233,10 +220,9 @@ describe('RAID E2E', function () {
             browser.executeScript(function () {
                 someRAID.push(make_el_obj(1), make_el_obj(2), make_el_obj(3));
                 someRAID.splice(-1, 1);
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
 
@@ -244,10 +230,9 @@ describe('RAID E2E', function () {
             browser.executeScript(function () {
                 someRAID.push(make_el_obj(1), make_el_obj(2), make_el_obj(3));
                 someRAID.splice(-2, 1);
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
 
@@ -255,10 +240,9 @@ describe('RAID E2E', function () {
             browser.executeScript(function () {
                 someRAID.push(make_el_obj(1), make_el_obj(2), make_el_obj(3));
                 someRAID.splice(0, 0, make_el_obj(4));
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
 
@@ -266,20 +250,18 @@ describe('RAID E2E', function () {
             browser.executeScript(function () {
                 someRAID.push(make_el_obj(1), make_el_obj(2), make_el_obj(3));
                 someRAID.splice(0, 0, make_el_obj(4), make_el_obj(5), make_el_obj(6));
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
 
         it('add new elements via splice(0, 0, 1, 2, 3)', function () {
             browser.executeScript(function () {
                 someRAID.splice(0, 0, make_el_obj(1), make_el_obj(2), make_el_obj(3));
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
 
@@ -287,10 +269,9 @@ describe('RAID E2E', function () {
             browser.executeScript(function () {
                 someRAID.push(make_el_obj(1), make_el_obj(2), make_el_obj(3));
                 someRAID.splice(99999, 0, make_el_obj(4), make_el_obj(6), make_el_obj(6));
-                return {html: some.innerHTML, arr: someRAID.arr, len: someRAID.length};
+                return {html: some.innerHTML, arr: someRAID.arr};
             }).then(function (result) {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
-                expect(result.len).toBe(result.arr.length); // check length
             });
         });
     });

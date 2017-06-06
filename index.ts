@@ -5,11 +5,9 @@ interface RaidObject {
 class Raid {
     arr: RaidObject[];
     parent: HTMLElement;
-    length: number;
 
     constructor(parent: HTMLElement) {
         this.arr = [];
-        this.length = this.arr.length;
         this.parent = parent;
     }
 
@@ -19,7 +17,6 @@ class Raid {
      */
     push(...items: RaidObject[]): number {
         items.forEach((item: RaidObject) => this.parent.appendChild(item.el));
-        this.length += items.length;
         return this.arr.push(...items);
     }
 
@@ -29,7 +26,6 @@ class Raid {
     pop(): any | undefined {
         let last: any | undefined = this.arr.pop();
         last && this.parent.removeChild(last.el);
-        this._updateLength();
         return last;
     }
 
@@ -39,7 +35,6 @@ class Raid {
     shift(): any | undefined {
         let first: any | undefined = this.arr.shift();
         first && this.parent.removeChild(first.el);
-        this._updateLength();
         return first;
     }
 
@@ -52,10 +47,7 @@ class Raid {
         } else {
             items.forEach((item: RaidObject) => this.parent.appendChild(item.el));
         }
-
-        let result: number = this.arr.unshift(...items);
-        this._updateLength();
-        return result;
+        return this.arr.unshift(...items);
     }
 
     /**
@@ -128,9 +120,7 @@ class Raid {
         } else {
             throw new Error('Some went wrong!');
         }
-        let result: RaidObject[] = this.arr.splice.apply(this.arr, arguments);
-        this._updateLength();
-        return result;
+        return this.arr.splice.apply(this.arr, arguments);
     }
 
     /**
@@ -141,10 +131,11 @@ class Raid {
         return this.parent.insertBefore(elem, refElem.nextSibling);
     }
 
-    /**
-     * Update length attribute
-     */
-    private _updateLength(){
-        this.length = this.arr.length;
+    set length(someArg) {
+        console.warn('You cant modify length!');
+    }
+
+    get length() {
+        return this.arr.length
     }
 }

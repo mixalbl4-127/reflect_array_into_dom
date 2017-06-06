@@ -1,7 +1,6 @@
 var Raid = (function () {
     function Raid(parent) {
         this.arr = [];
-        this.length = this.arr.length;
         this.parent = parent;
     }
     /**
@@ -15,7 +14,6 @@ var Raid = (function () {
             items[_i] = arguments[_i];
         }
         items.forEach(function (item) { return _this.parent.appendChild(item.el); });
-        this.length += items.length;
         return (_a = this.arr).push.apply(_a, items);
         var _a;
     };
@@ -25,7 +23,6 @@ var Raid = (function () {
     Raid.prototype.pop = function () {
         var last = this.arr.pop();
         last && this.parent.removeChild(last.el);
-        this._updateLength();
         return last;
     };
     /**
@@ -34,7 +31,6 @@ var Raid = (function () {
     Raid.prototype.shift = function () {
         var first = this.arr.shift();
         first && this.parent.removeChild(first.el);
-        this._updateLength();
         return first;
     };
     /**
@@ -52,9 +48,7 @@ var Raid = (function () {
         else {
             items.forEach(function (item) { return _this.parent.appendChild(item.el); });
         }
-        var result = (_a = this.arr).unshift.apply(_a, items);
-        this._updateLength();
-        return result;
+        return (_a = this.arr).unshift.apply(_a, items);
         var _a;
     };
     /**
@@ -131,9 +125,7 @@ var Raid = (function () {
         else {
             throw new Error('Some went wrong!');
         }
-        var result = this.arr.splice.apply(this.arr, arguments);
-        this._updateLength();
-        return result;
+        return this.arr.splice.apply(this.arr, arguments);
     };
     /**
      * insertAfter for DOM
@@ -142,12 +134,16 @@ var Raid = (function () {
     Raid.prototype.insertAfter = function (elem, refElem) {
         return this.parent.insertBefore(elem, refElem.nextSibling);
     };
-    /**
-     * Update length attribute
-     */
-    Raid.prototype._updateLength = function () {
-        this.length = this.arr.length;
-    };
+    Object.defineProperty(Raid.prototype, "length", {
+        get: function () {
+            return this.arr.length;
+        },
+        set: function (someArg) {
+            console.warn('You cant modify length!');
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Raid;
 }());
 //# sourceMappingURL=index.js.map
