@@ -85,14 +85,13 @@ class Raid {
             console.warn('RAID: empty .sort() can\'t sorts objects correctly! Use .sort(compareFn)!');
             // Default sort
             this.arr.sort((a: RaidObject, b: RaidObject) => {
-                if (String(a) > String(b)) {
+                let res:number = +(String(a) > String(b)) || +(String(a) === String(b)) - 1;
+                if (res > 0) {
                     this.insertAfter(a.el, b.el);
-                    return 1;
-                } else if (String(a) < String(b)) {
+                } else if (res < 0) {
                     this.parent.insertBefore(a.el, b.el);
-                    return -1;
                 }
-                return 0;
+                return res;
             });
         }
         return this.arr;
