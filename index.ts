@@ -77,7 +77,7 @@ class Raid {
                 if (res > 0) {
                     this.insertAfter(a.el, b.el);
                 } else if (res < 0) {
-                    this.insertAfter(b.el, a.el);
+                    this.parent.insertBefore(a.el, b.el);
                 }
                 return res;
             });

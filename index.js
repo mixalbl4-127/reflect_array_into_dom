@@ -78,7 +78,7 @@ var Raid = (function () {
                     _this.insertAfter(a.el, b.el);
                 }
                 else if (res < 0) {
-                    _this.insertAfter(b.el, a.el);
+                    _this.parent.insertBefore(a.el, b.el);
                 }
                 return res;
             });
