@@ -63,29 +63,8 @@ class Raid {
      * Sorts an array.
      */
     sort(compareFn?: (a: RaidObject, b: RaidObject) => number): RaidObject[] {
-        if (compareFn) {
-            this.arr.sort((a: RaidObject, b: RaidObject) => {
-                let res = compareFn(a, b);
-                if (res > 0) {
-                    this.insertAfter(a.el, b.el);
-                } else if (res < 0) {
-                    this.parent.insertBefore(a.el, b.el);
-                }
-                return res;
-            });
-        } else {
-            console.warn('RAID: empty .sort() can\'t sorts objects correctly! Use .sort(compareFn)!');
-            // Default sort
-            this.arr.sort((a: RaidObject, b: RaidObject) => {
-                let res:number = +(String(a) > String(b)) || +(String(a) === String(b)) - 1;
-                if (res > 0) {
-                    this.insertAfter(a.el, b.el);
-                } else if (res < 0) {
-                    this.parent.insertBefore(a.el, b.el);
-                }
-                return res;
-            });
-        }
+        this.arr.sort.apply(this.arr, arguments);
+        this.arr.forEach((item: RaidObject) => this.parent.appendChild(item.el));
         return this.arr;
     }
 

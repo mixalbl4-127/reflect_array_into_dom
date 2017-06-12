@@ -174,6 +174,21 @@ describe('RAID E2E', function () {
                 expect(result.html).toBe(arr2html(result.arr)); // check html
             });
         });
+
+        it('push ["Cam51", "Cam2", "Cam7", "Cam7", "Cam3", ...] and sort (a > b)', function () {
+            browser.executeScript(function () {
+                var arr = ["Cam2", "out", "Cam51", "Cam2", "Cam7", "Cam7", "Cam3", "Cam8", "out", "out", "out"];
+                arr.forEach(function (el) {
+                    someRAID.push(make_el_obj(el));
+                });
+                someRAID.sort(function (a, b) {
+                    return +(a.text > b.text) || +(a.text === b.text) - 1;
+                });
+                return {html: some.innerHTML, arr: someRAID.arr};
+            }).then(function (result) {
+                expect(result.html).toBe(arr2html(result.arr)); // check html
+            });
+        });
     });
 
     describe('splice', function () {

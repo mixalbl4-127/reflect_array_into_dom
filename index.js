@@ -65,32 +65,8 @@ var Raid = (function () {
      */
     Raid.prototype.sort = function (compareFn) {
         var _this = this;
-        if (compareFn) {
-            this.arr.sort(function (a, b) {
-                var res = compareFn(a, b);
-                if (res > 0) {
-                    _this.insertAfter(a.el, b.el);
-                }
-                else if (res < 0) {
-                    _this.parent.insertBefore(a.el, b.el);
-                }
-                return res;
-            });
-        }
-        else {
-            console.warn('RAID: empty .sort() can\'t sorts objects correctly! Use .sort(compareFn)!');
-            // Default sort
-            this.arr.sort(function (a, b) {
-                var res = +(String(a) > String(b)) || +(String(a) === String(b)) - 1;
-                if (res > 0) {
-                    _this.insertAfter(a.el, b.el);
-                }
-                else if (res < 0) {
-                    _this.parent.insertBefore(a.el, b.el);
-                }
-                return res;
-            });
-        }
+        this.arr.sort.apply(this.arr, arguments);
+        this.arr.forEach(function (item) { return _this.parent.appendChild(item.el); });
         return this.arr;
     };
     /**
